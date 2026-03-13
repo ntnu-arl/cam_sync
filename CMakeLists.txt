@@ -10,6 +10,7 @@ project(cam_sync)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
+  message_filters
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES cam_sync
-#  CATKIN_DEPENDS sensor_msgs
+#  CATKIN_DEPENDS sensor_msgs message_filters
 #  DEPENDS system_lib
 )
 
@@ -133,8 +134,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/cam_sync_node.cpp)
-add_executable(image_timestamp_synchronizer src/image_timestamp_synchronizer.cpp)
-target_link_libraries(image_timestamp_synchronizer ${catkin_LIBRARIES})
+add_executable(cam_sync_node src/cam_sync_node.cpp)
+target_link_libraries(cam_sync_node ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
